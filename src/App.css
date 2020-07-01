@@ -1,19 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .app-wrapper {
     margin: 0 auto;
-    display: grid;
     width: 1200px;
-    grid-template-areas:
-            "h h "
-            "n c";
-
-    grid-template-rows: 60px 1fr;
+    display: grid;
+    grid-auto-rows: minmax(90px, auto);
     grid-template-columns: 2fr 10fr;
-    /*grid-gap: 10px;*/
+    grid-gap: 10px;
+    grid-template-areas:
+            "header ."
+            "navbar c";
 }
 
 .app-wrapper-content{
     grid-area: c;
-    background-color: powderblue;
+    background-color: #E8FCFF;
 }
 
 

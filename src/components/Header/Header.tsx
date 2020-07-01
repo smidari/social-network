@@ -1,10 +1,16 @@
 import React from "react";
 import h from './Header.module.css'
+import {NavLink} from "react-router-dom";
+
 
 const Header = () => (
     <header className={h.header}>
-        <img src="https://static.rfstat.com/renderforest/images/v2/logo-homepage/flat_3.png" alt="image"/>
+        <NavLink to='#' className={h.logo}>
+            <img src="img/logo.png" alt="image"/>
+        </NavLink>
     </header>
 );
 
 export default Header;
+
+

@@ -1,7 +1,18 @@
 .header {
-    grid-area: h;
-    background-color: lightseagreen;
+    grid-area: header;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1/3;
+    background-color: #EFEFEF;
+    z-index: 1;
 }
-.header img{
-    width: 80px;
+
+.logo img {
+    width: 150px;
+}
+
+.logo {
+    justify-self: start;
+    align-self: center;
+    margin-left: 20px;
 }

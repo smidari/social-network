@@ -1,0 +1,10 @@
+.profileInfo  {
+    grid-column:1/3;
+    display: flex;
+    flex-wrap: wrap;
+}
+.profileInfo img {
+    vertical-align: middle;
+    width: 100%;
+}
+
