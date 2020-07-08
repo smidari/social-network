@@ -1,15 +1,20 @@
 import React from "react";
-import s from "./Dialogs.module.css";
+import s from "../Dialogs.module.css";
 import {NavLink} from "react-router-dom";
 
+
+type TypeObject = {
+    id: number
+    name: string
+}
 type PropsType = {
-    arrName: Array<string>
+    dialogs: Array<TypeObject>
 }
 const DialogItem = (props: PropsType) => (
     <>
-        {props.arrName.map((item, index) =>
+        {props.dialogs.map((item, index) =>
             <div className={s.dialog}>
-                <NavLink to={`/dialogs/${index}`}>{item}</NavLink>
+                <NavLink to={`/dialogs/${item.id}`}>{item.name}</NavLink>
             </div>
         )}
     </>

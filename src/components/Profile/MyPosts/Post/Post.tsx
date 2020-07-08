@@ -3,9 +3,10 @@ import s from "./Post.module.css"
 
 type PostType = {
     message: string
+    likeCount: number
 }
 
-const Post: React.FC<PostType> = props => (
+const Post = (props: PostType) => (
     <div className={s.item}>
         <div>
             <img

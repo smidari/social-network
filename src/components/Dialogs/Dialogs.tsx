@@ -1,18 +1,15 @@
 import React from "react";
 import s from './Dialogs.module.css'
-import DialogItem from "./DialogItem";
-
-const arrName = ['Dima', 'Masha', 'Sasha', 'Dasha'];
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 const Dialogs = (props: any) => (
     <div className={s.dialogs}>
         <div className={s.dialogsItems}>
-            <DialogItem arrName={arrName}/>
+            <DialogItem dialogs={props.dialogs}/>
         </div>
         <div className={s.messages}>
-            <div className={s.message}>Hi</div>
-            <div className={s.message}>Hello</div>
-            <div className={s.message}>yei</div>
+            <Message messages={props.messages}/>
         </div>
     </div>
 );
