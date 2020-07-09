@@ -1,23 +1,15 @@
 import React from "react";
 import s from "../Dialogs.module.css";
-import {NavLink} from "react-router-dom";
+import {MessageType} from "../../../redux/state";
 
-type TypeMessage = {
-    id: number
-    message: string
-}
-type PropsType = {
-    messages: Array<TypeMessage>
+type MessageFCType = {
+    messages: Array<MessageType>
 }
 
-const Message = (props: PropsType) => (
+const Message: React.FC<MessageFCType> = props => (
     <>
-        {props.messages.map((item) =>
-
-                <div className={s.message}>{item.message}</div>
-
-        )}
+        {props.messages.map((item) => <div className={s.message}>{item.message}</div>)}
     </>
-)
+);
 
 export default Message;
