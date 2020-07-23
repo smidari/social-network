@@ -9,23 +9,27 @@ import {RootStateType} from "./redux/state";
 
 type AppType = {
     state: RootStateType
+    addPost: (postMessage: string) => void
 }
 
 const App: React.FC<AppType> = props => (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <MyNavbar/>
-                <div className='app-wrapper-content'>
-                    <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}/>}/>
-                    <Route path='/dialogs' render={() => <Dialogs messagesPage={props.state.messagesPage}/>}/>
+    <BrowserRouter>
+        <div className='app-wrapper'>
+            <Header/>
+            <MyNavbar/>
+            <div className='app-wrapper-content'>
+                <Route path='/profile' render={() => <Profile
+                    profilePage={props.state.profilePage}
+                    addPost={props.addPost}/>}
+                />
+                <Route path='/dialogs' render={() => <Dialogs messagesPage={props.state.messagesPage}/>}/>
 
-                    <Route path='/news' component={Dialogs}/>
-                    <Route path='/music' component={Dialogs}/>
-                    <Route path='/settings' component={Dialogs}/>
-                </div>
+                <Route path='/news' component={Dialogs}/>
+                <Route path='/music' component={Dialogs}/>
+                <Route path='/settings' component={Dialogs}/>
             </div>
-        </BrowserRouter>
+        </div>
+    </BrowserRouter>
 );
 
 

@@ -1,28 +1,30 @@
+import {rerenderEntireTree} from "../render";
+
 export type PostType = {
     id: number
     message: string
     likeCount: number
-}
+};
 export type DialogType = {
     id: number
     name: string
-}
+};
 export type MessageType = {
     id: number
     message: string
-}
+};
 export type ProfilePageType = {
     posts: Array<PostType>
 
-}
+};
 export type MessagesPageType = {
     messages: Array<MessageType>
     dialogs: Array<DialogType>
-}
+};
 export type RootStateType = {
     profilePage: ProfilePageType
     messagesPage: MessagesPageType
-}
+};
 
 let state: RootStateType = {
     profilePage: {
@@ -48,7 +50,17 @@ let state: RootStateType = {
             {id: 5, name: 'Svetlana'},
             {id: 6, name: 'Valera'}
         ],
-    }
+    },
+};
+
+export let addPost = (postMessage: string) => {
+    const newPost: PostType = {
+        id: 5,
+        message: postMessage,
+        likeCount: 0
+    };
+    state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state)
 };
 export default state;
 
