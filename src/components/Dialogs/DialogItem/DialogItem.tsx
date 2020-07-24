@@ -10,7 +10,7 @@ type DialogItemType = {
 const DialogItem:React.FC<DialogItemType> = props => (
     <>
         {props.dialogs.map(item =>
-            <div className={s.dialog}>
+            <div key={item.id} className={s.dialog}>
                 <NavLink to={`/dialogs/${item.id}`}>{item.name}</NavLink>
             </div>
         )}

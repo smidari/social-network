@@ -8,7 +8,7 @@ type MessageFCType = {
 
 const Message: React.FC<MessageFCType> = props => (
     <>
-        {props.messages.map((item) => <div className={s.message}>{item.message}</div>)}
+        {props.messages.map((item) => <div key={item.id} className={s.message}>{item.message}</div>)}
     </>
 );
 

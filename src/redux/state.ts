@@ -1,5 +1,3 @@
-import {rerenderEntireTree} from "../render";
-
 export type PostType = {
     id: number
     message: string
@@ -15,7 +13,7 @@ export type MessageType = {
 };
 export type ProfilePageType = {
     posts: Array<PostType>
-
+    newPostText:string
 };
 export type MessagesPageType = {
     messages: Array<MessageType>
@@ -26,6 +24,11 @@ export type RootStateType = {
     messagesPage: MessagesPageType
 };
 
+
+let rerenderEntireTree =(state: RootStateType) => {
+
+};
+
 let state: RootStateType = {
     profilePage: {
         posts: [
@@ -33,7 +36,8 @@ let state: RootStateType = {
             {id: 2, message: 'its my first posts', likeCount: 23},
             {id: 3, message: 'hi', likeCount: 3},
             {id: 4, message: 'its my first postsfsfsdfsdfsdfs', likeCount: 5},
-        ]
+        ],
+        newPostText: 'it camasutra'
     },
     messagesPage: {
         messages: [
@@ -53,14 +57,23 @@ let state: RootStateType = {
     },
 };
 
-export let addPost = (postMessage: string) => {
+export const addPost = () => {
     const newPost: PostType = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likeCount: 0
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
     rerenderEntireTree(state)
+};
+
+export const updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state)
+};
+export const subscribe = (observer:any) => {
+    rerenderEntireTree = observer;
 };
 export default state;
 
