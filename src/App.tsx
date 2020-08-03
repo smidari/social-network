@@ -21,12 +21,17 @@ const App: React.FC<AppType> = props => (
             <div className='app-wrapper-content'>
                 <Route
                     path='/profile'
-                    render={() => <Profile
-                        profilePage={props.state.profilePage}
-                        dispatch={props.dispatch}
-                    />}
+                    render={() =>
+                        <Profile
+                            profilePage={props.state.profilePage}
+                            dispatch={props.dispatch}
+                        />}
                 />
-                <Route path='/dialogs' render={() => <Dialogs messagesPage={props.state.messagesPage}/>}/>
+                <Route path='/dialogs' render={() =>
+                    <Dialogs
+                        dialogsPage={props.state.dialogsPage}
+                        dispatch={props.dispatch}
+                    />}/>
 
                 <Route path='/news' component={Dialogs}/>
                 <Route path='/music' component={Dialogs}/>
