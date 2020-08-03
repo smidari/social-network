@@ -1,5 +1,5 @@
-import propfileReduser from "./profile-reduser";
-import dialogsReduser from "./dialogs-reduser";
+import propfileReduser, {addPostActionCreator, updateNewPostActionCreator,} from "./profile-reduser";
+import dialogsReduser, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reduser";
 
 export type PostType = {
     id: number
@@ -29,19 +29,20 @@ export type RootStateType = {
 };
 
 
-export type ActionType = {
-    type: string
-    payload?: () => void
-    newText?: any
-    body?: any
-}
+export type ActionsType =
+    ReturnType<typeof addPostActionCreator>
+    | ReturnType<typeof updateNewPostActionCreator>
+    | ReturnType<typeof sendMessageCreator>
+    | ReturnType<typeof updateNewMessageBodyCreator>
+
 export type StoreType = {
     _state: RootStateType
     _callSubscriber: (state: RootStateType) => void
     getState: () => RootStateType
-    subscribe: (observer: any) => void
-    dispatch: (action: ActionType) => void
+    subscribe: (observer: (state: RootStateType) => void) => void
+    dispatch: (action: ActionsType) => void
 }
+
 let store: StoreType = {
     _state: {
         profilePage: {
@@ -85,8 +86,6 @@ let store: StoreType = {
         this._callSubscriber(this._state)
     },
 };
-
-
 
 
 export default store;

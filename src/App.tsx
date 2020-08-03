@@ -5,11 +5,11 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import Profile from "./components/Profile/Profile";
 import {Route, BrowserRouter} from "react-router-dom";
 import MyNavbar from "./components/MyNavbar/MyNavbar";
-import {ActionType, RootStateType} from "./redux/state";
+import {ActionsType, RootStateType} from "./redux/state";
 
 type AppType = {
     state: RootStateType
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionsType) => void
 
 }
 

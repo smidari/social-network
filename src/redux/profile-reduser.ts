@@ -1,7 +1,7 @@
 import {PostType} from "./state";
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
 const propfileReduser = (state: any, action: any) => {
     switch (action.type) {
@@ -22,5 +22,8 @@ const propfileReduser = (state: any, action: any) => {
     }
 };
 export default propfileReduser;
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export const addPostActionCreator = () => ({type: ADD_POST} as const);
+export const updateNewPostActionCreator = (text: string) => ({
+    type: UPDATE_NEW_POST_TEXT,
+    newText: text
+}as const);
