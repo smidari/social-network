@@ -2,7 +2,8 @@ import React from "react";
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {ActionType, MessagesPageType, sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/state";
+import {ActionType, MessagesPageType} from "../../redux/state";
+import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reduser";
 
 type DialogsType = {
     dialogsPage: MessagesPageType
@@ -11,7 +12,7 @@ type DialogsType = {
 
 const Dialogs: React.FC<DialogsType> = props => {
     let onSendMessageClick = () => props.dispatch(sendMessageCreator());
-    let onSendMessageChange = (e:any) => {
+    let onSendMessageChange = (e: any) => {
         let body = e.target.value;
         props.dispatch(updateNewMessageBodyCreator(body))
     };

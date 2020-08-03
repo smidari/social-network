@@ -1,3 +1,6 @@
+import propfileReduser from "./profile-reduser";
+import dialogsReduser from "./dialogs-reduser";
+
 export type PostType = {
     id: number
     message: string
@@ -39,12 +42,6 @@ export type StoreType = {
     subscribe: (observer: any) => void
     dispatch: (action: ActionType) => void
 }
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
-const SEND_MESSAGE = 'SEND_MESSAGE';
-
 let store: StoreType = {
     _state: {
         profilePage: {
@@ -71,7 +68,7 @@ let store: StoreType = {
                 {id: 5, name: 'Svetlana'},
                 {id: 6, name: 'Valera'}
             ],
-            newMessageBody:'',
+            newMessageBody: '',
         },
     },
     _callSubscriber(state) {
@@ -83,35 +80,13 @@ let store: StoreType = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            const newPost: PostType = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY ){
-            this._state.dialogsPage.newMessageBody = action.body;
-            this._callSubscriber(this._state)
-        }else if (action.type === SEND_MESSAGE ){
-           let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.newMessageBody ='';
-            this._state.dialogsPage.messages.push({id: 6, message: body});
-            this._callSubscriber(this._state)
-        }
+        this._state.profilePage = propfileReduser(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReduser(this._state.dialogsPage, action);
+        this._callSubscriber(this._state)
     },
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE});
-export const updateNewMessageBodyCreator = (body: string) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
 
 
 export default store;
