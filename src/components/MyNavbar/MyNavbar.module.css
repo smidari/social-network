@@ -14,20 +14,20 @@
     line-height: 40px;
     font-size: 20px;
     padding-left: 15px;
-    color: #464646;
+    color: #6a6a6a;
     display: block;
 }
 
 .item a:hover {
     text-decoration: none;
-    color: #464646;
+    color: #6a6a6a;
     background-color: #A9FAFF;
 }
 
 
 .item .active {
     background-color: #A9FAFF;
-    color: #464646;
+    color: #6a6a6a;
     font-weight: 600;
 }
 
