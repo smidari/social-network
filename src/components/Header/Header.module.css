@@ -1,18 +1,16 @@
-.header {
-    grid-area: header;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column: 1/3;
-    background-color: #EFEFEF;
-    z-index: 1;
+.header
+{ z-index: 1; display: grid;  background-color: #efefef; 
+
+    grid-area: header;  grid-template-columns: repeat(2, 1fr);  grid-column: 1/3; 
 }
 
-.logo img {
+.logo img
+{
     width: 150px;
 }
 
-.logo {
-    justify-self: start;
-    align-self: center;
-    margin-left: 20px;
+.logo
+{ align-self: center;  margin-left: 20px;
+
+    justify-self: start; 
 }

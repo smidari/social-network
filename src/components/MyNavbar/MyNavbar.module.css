@@ -1,33 +1,28 @@
-.nav {
-    grid-area: navbar;
-    height: 100vh;
+.nav
+{ height: 100vh;
+
+    grid-area: navbar; 
 }
 
-.item {
-    transition: .3s;
-    margin-bottom: 10px;
+.item
+{ margin-bottom: 10px;
+
+    transition: .3s; 
 }
 
-.item a {
-    background-color: #e8fcff;
-    text-decoration: none;
-    line-height: 40px;
-    font-size: 20px;
-    padding-left: 15px;
-    color: #6a6a6a;
-    display: block;
+.item a
+{ font-size: 20px;  line-height: 40px;  display: block; padding-left: 15px;  text-decoration: none;  color: #6a6a6a; 
+    background-color: #e8fcff; 
 }
 
-.item a:hover {
-    text-decoration: none;
-    color: #6a6a6a;
-    background-color: #A9FAFF;
+.item a:hover
+{
+    text-decoration: none;  color: #6a6a6a;  background-color: #a9faff;
 }
 
 
-.item .active {
-    background-color: #A9FAFF;
-    color: #6a6a6a;
-    font-weight: 600;
+.item .active
+{ font-weight: 600; color: #6a6a6a; 
+    background-color: #a9faff; 
 }
 
