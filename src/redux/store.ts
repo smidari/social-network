@@ -1,5 +1,5 @@
-import propfileReduser, {addPostActionCreator, updateNewPostActionCreator,} from "./profile-reduser";
-import dialogsReduser, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reduser";
+import profileReducer, {addPostActionCreator, updateNewPostActionCreator,} from "./profile-reduser";
+import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
 
 export type PostType = {
     id: number
@@ -81,8 +81,8 @@ let store: StoreType = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        this._state.profilePage = propfileReduser(this._state.profilePage, action);
-        this._state.dialogsPage = dialogsReduser(this._state.dialogsPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._callSubscriber(this._state)
     },
 };

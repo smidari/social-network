@@ -5,12 +5,12 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import Profile from "./components/Profile/Profile";
 import {Route, BrowserRouter} from "react-router-dom";
 import MyNavbar from "./components/MyNavbar/MyNavbar";
-import {ActionsType, RootStateType} from "./redux/state";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 type AppType = {
-    state: RootStateType
-    dispatch: (action: ActionsType) => void
-
+    // state: RootStateType
+    // dispatch: (action: ActionsType) => void
+    store: any
 }
 
 const App: React.FC<AppType> = props => (
@@ -21,18 +21,10 @@ const App: React.FC<AppType> = props => (
             <div className='app-wrapper-content'>
                 <Route
                     path='/profile'
-                    render={() =>
-                        <Profile
-                            profilePage={props.state.profilePage}
-                            dispatch={props.dispatch}
-                        />}
+                    render={() => <Profile store={props.store}/>}
                 />
                 <Route path='/dialogs' render={() =>
-                    <Dialogs
-                        dialogsPage={props.state.dialogsPage}
-                        dispatch={props.dispatch}
-                    />}/>
-
+                    <DialogsContainer store={props.store}/>}/>
                 <Route path='/news' component={Dialogs}/>
                 <Route path='/music' component={Dialogs}/>
                 <Route path='/settings' component={Dialogs}/>
