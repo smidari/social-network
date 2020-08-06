@@ -6,19 +6,19 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {RootStateType} from "./redux/store";
 import store from "./redux/redux-store";
+import StoreContext from "./StoreContext";
 
 
 let rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App
-                store={}
-                state={state}
-                dispatch={store.dispatch.bind(store)}
-            />
+            <StoreContext.Provider value={store}>
+            <App/>
+            </StoreContext.Provider>
         </React.StrictMode>,
         document.getElementById('root')
-    );
+    )
+    ;
 };
 rerenderEntireTree(store.getState());
 store.subscribe(() => {

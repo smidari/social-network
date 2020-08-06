@@ -12,7 +12,7 @@ type DialogsType = {
 
 const Dialogs: React.FC<DialogsType> = props => {
     let onSendMessageClick = () => props.sendMessage();
-
+    debugger;
     let onSendMessageChange = (e: any) => {
         let body = e.target.value;
         props.updateNewMessageBody(body)

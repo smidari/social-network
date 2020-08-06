@@ -7,24 +7,14 @@ import {Route, BrowserRouter} from "react-router-dom";
 import MyNavbar from "./components/MyNavbar/MyNavbar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-type AppType = {
-    // state: RootStateType
-    // dispatch: (action: ActionsType) => void
-    store: any
-}
-
-const App: React.FC<AppType> = props => (
+const App = () => (
     <BrowserRouter>
         <div className='app-wrapper'>
             <Header/>
             <MyNavbar/>
             <div className='app-wrapper-content'>
-                <Route
-                    path='/profile'
-                    render={() => <Profile store={props.store}/>}
-                />
-                <Route path='/dialogs' render={() =>
-                    <DialogsContainer store={props.store}/>}/>
+                <Route path='/profile' render={() => <Profile/>}/>
+                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                 <Route path='/news' component={Dialogs}/>
                 <Route path='/music' component={Dialogs}/>
                 <Route path='/settings' component={Dialogs}/>
