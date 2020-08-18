@@ -1,6 +1,6 @@
 import React from "react";
 import s from "../Dialogs.module.css";
-import {MessageType} from "../../../redux/store";
+import {MessageType} from "../../../types/entities";
 
 type MessageFCType = {
     messages: Array<MessageType>

@@ -1,9 +1,14 @@
-import {PostType} from "./store";
+import {
+    ActionsType,
+    addPostActionCreatorType,
+    PostType, ProfilePageType,
+    updateNewPostActionCreatorType
+} from "../types/entities";
 
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+export const ADD_POST = 'ADD_POST';
+export const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 
-let initialState = {
+let initialState: ProfilePageType = {
     posts: [
         {id: 1, message: 'How are you', likeCount: 10},
         {id: 2, message: 'its my first posts', likeCount: 23},
@@ -13,27 +18,30 @@ let initialState = {
     newPostText: 'it camasutra'
 };
 
-const profileReducer = (state: any =initialState, action: any) => {
+const profileReducer = (state = initialState, action: ActionsType): ProfilePageType => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             const newPost: PostType = {
                 id: 5,
                 message: state.newPostText,
                 likeCount: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+            let stateCopy = {...state, posts: [...state.posts, newPost]};
+            stateCopy.newPostText = '';
+            return stateCopy;
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {...state, newPostText: action.newText};
+        }
         default:
             return state;
     }
 };
+
 export default profileReducer;
-export const addPostActionCreator = () => ({type: ADD_POST} as const);
-export const updateNewPostActionCreator = (text: string) => ({
+
+export const addPostActionCreator = (): addPostActionCreatorType => ({type: ADD_POST} as const);
+export const updateNewPostActionCreator = (text: string): updateNewPostActionCreatorType => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text
 } as const);

@@ -1,47 +1,6 @@
-import profileReducer, {addPostActionCreator, updateNewPostActionCreator,} from "./profile-reduser";
-import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
-
-export type PostType = {
-    id: number
-    message: string
-    likeCount: number
-};
-export type DialogType = {
-    id: number
-    name: string
-};
-export type MessageType = {
-    id: number
-    message: string
-};
-export type ProfilePageType = {
-    posts: Array<PostType>
-    newPostText: string
-};
-export type MessagesPageType = {
-    messages: Array<MessageType>
-    dialogs: Array<DialogType>
-    newMessageBody: string
-};
-export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: MessagesPageType
-};
-
-
-export type ActionsType =
-    ReturnType<typeof addPostActionCreator>
-    | ReturnType<typeof updateNewPostActionCreator>
-    | ReturnType<typeof sendMessageCreator>
-    | ReturnType<typeof updateNewMessageBodyCreator>
-
-export type StoreType = {
-    _state: RootStateType
-    _callSubscriber: (state: RootStateType) => void
-    getState: () => RootStateType
-    subscribe: (observer: (state: RootStateType) => void) => void
-    dispatch: (action: ActionsType) => void
-}
+import profileReducer from "./profile-reduser";
+import dialogsReducer from "./dialogs-reducer";
+import {StoreType} from "../types/entities";
 
 let store: StoreType = {
     _state: {

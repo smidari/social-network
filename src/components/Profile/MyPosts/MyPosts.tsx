@@ -1,14 +1,14 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {ActionsType, PostType} from "../../../redux/store";
+import {ActionsType, PostType} from "../../../types/entities";
 
 type MyPostsType = {
     posts: Array<PostType>
     dispatch?: (action: ActionsType) => void
     newPostText: string
-    addPost: any
-    updateNewPost: any
+    addPost: () => void
+    updateNewPost: (text:string) => void
 }
 
 
