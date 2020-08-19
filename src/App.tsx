@@ -6,6 +6,7 @@ import Profile from "./components/Profile/Profile";
 import {Route, BrowserRouter} from "react-router-dom";
 import MyNavbar from "./components/MyNavbar/MyNavbar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/users/UsersContainer";
 
 const App = () => (
     <BrowserRouter>
@@ -18,6 +19,7 @@ const App = () => (
                 <Route path='/news' component={Dialogs}/>
                 <Route path='/music' component={Dialogs}/>
                 <Route path='/settings' component={Dialogs}/>
+                <Route path='/users' render={() => <UsersContainer/>} />
             </div>
         </div>
     </BrowserRouter>

@@ -29,7 +29,7 @@ let initialState: MessagesPageType = {
 const dialogsReducer = (state = initialState, action: ActionsType): MessagesPageType => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY: {
-            return {...state, newMessageBody: action.text};
+            return {...state, newMessageBody: action.body};
         }
         case SEND_MESSAGE: {
             let stateCopy = {...state, messages: [...state.messages, {id: 6, message: state.newMessageBody}]};
@@ -44,8 +44,8 @@ const dialogsReducer = (state = initialState, action: ActionsType): MessagesPage
 export default dialogsReducer;
 
 export const sendMessageCreator = (): sendMessageCreatorType => ({type: SEND_MESSAGE} as const);
-export const updateNewMessageBodyCreator = (text: string): updateNewMessageBodyCreatorType => ({
+export const updateNewMessageBodyCreator = (body: string): updateNewMessageBodyCreatorType => ({
     type: UPDATE_NEW_MESSAGE_BODY,
-    text: text
+    body: body
 } as const);
 

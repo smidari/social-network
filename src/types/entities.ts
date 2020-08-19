@@ -10,6 +10,16 @@ import {
     UPDATE_NEW_MESSAGE_BODY,
     updateNewMessageBodyCreator
 } from "../redux/dialogs-reducer";
+import {
+    FOLLOW,
+    followAC,
+    SET_USERS,
+    setUsersAC,
+    UNFOLLOW,
+    unfollowAC,
+    UsersState,
+    UsersType
+} from "../redux/users-reduser";
 
 
 export type PostType = {
@@ -52,6 +62,9 @@ export type ActionsType =
     | ReturnType<typeof updateNewPostActionCreator>
     | ReturnType<typeof sendMessageCreator>
     | ReturnType<typeof updateNewMessageBodyCreator>
+    | ReturnType<typeof followAC>
+    | ReturnType<typeof unfollowAC>
+    | ReturnType<typeof setUsersAC>
 
 
 //Types Actions profile-reducer
@@ -65,8 +78,22 @@ export type updateNewPostActionCreatorType = {
 //Types Actions dialogs-reducer
 export type sendMessageCreatorType = {
     type: typeof SEND_MESSAGE
-};export type updateNewMessageBodyCreatorType = {
+};
+export type updateNewMessageBodyCreatorType = {
     type: typeof UPDATE_NEW_MESSAGE_BODY
-    text: string
+    body: string
 };
 
+//Types Users-reducer
+export type followACType = {
+    type: typeof FOLLOW
+    userId: number
+}
+export type unfollowACType = {
+    type: typeof UNFOLLOW
+    userId: number
+}
+export type setUsersACType = {
+    type: typeof SET_USERS
+    users: Array<UsersType>
+}
