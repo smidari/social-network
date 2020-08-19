@@ -1,16 +1,9 @@
 import React from "react";
 import s from './users.module.css'
-import {UsersType} from "../../redux/users-reduser";
+import {UserPropsType} from "./UsersContainer";
 
-
-type UserPropsType = {
-    users: Array<UsersType>
-    follow: (userId: number) => void
-    unfollow: (userId: number) => void
-    setUsers: (users:any) => void
-}
-const Users = (props: UserPropsType) => {
-    if(props.users.length === 0){
+const Users: React.FC<UserPropsType> = props => {
+    if (props.users.length === 0) {
         props.setUsers([
             {
                 id: 1,

@@ -1,18 +1,9 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {ActionsType, PostType} from "../../../types/entities";
+import {MyPostPropsType} from "./MyPostsContainer";
 
-type MyPostsType = {
-    posts: Array<PostType>
-    dispatch?: (action: ActionsType) => void
-    newPostText: string
-    addPost: () => void
-    updateNewPost: (text:string) => void
-}
-
-
-const MyPosts: React.FC<MyPostsType> = props => {
+const MyPosts: React.FC<MyPostPropsType> = props => {
     let postsElements = props.posts.map(p => <Post key={p.id} message={p.message} likeCount={p.likeCount}/>);
     let newPostElement = React.createRef<HTMLTextAreaElement>();
     let onAddPost = () => {

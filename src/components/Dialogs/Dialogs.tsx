@@ -2,15 +2,9 @@ import React from "react";
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {MessagesPageType} from "../../types/entities";
+import {DialogsPropsType} from "./DialogsContainer";
 
-type DialogsType = {
-    dialogsPage: MessagesPageType
-    updateNewMessageBody: (body: string) => void
-    sendMessage: () => void
-}
-
-const Dialogs: React.FC<DialogsType> = props => {
+const Dialogs: React.FC<DialogsPropsType> = props => {
     let onSendMessageClick = () => props.sendMessage();
 
     let onSendMessageChange = (e: any) => {
