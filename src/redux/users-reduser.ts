@@ -2,7 +2,7 @@ import {ActionsType, followACType, setUsersACType, unfollowACType} from "../type
 
 export type UsersType = {
     id: number
-    photoUrl: string
+    photos: any
     followed: boolean
     name: string
     status: string
