@@ -4,37 +4,53 @@ import {UserPropsType} from "./UsersContainer";
 import * as axios from "axios";
 import userPhoto from '../../assets/images/icon.png'
 
-//: React.FC<UserPropsType>
 class Users extends React.Component<UserPropsType> {
-
-    constructor(props:any) {
-        super(props);
+    componentDidMount(): void {
         // @ts-ignore
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items);
+            this.props.setTotalUsersCount(response.data.totalCount);
         });
-
     }
 
-
-    getUsers = () => {
-        if (this.props.users.length === 0) {
-            // @ts-ignore
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                this.props.setUsers(response.data.items);
-            });
-        }
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber);
+        // @ts-ignore
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${pageNumber}`).then(response => {
+            this.props.setUsers(response.data.items);
+        });
     };
 
-// : React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined
+
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return (
             <>
-                <button onClick={() => this.getUsers()}>get users</button>
+                <div>
+                    {
+                        pages.map((p, index) => <span key={index}
+                                                      className={this.props.currentPage === p ? s.selectedPage : 'sda'}
+                                                      onClick={() => {
+                                                          this.props.setCurrentPage(p);
+                                                          // @ts-ignore
+                                                          axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${p}`).then(response => {
+                                                              this.props.setUsers(response.data.items);
+                                                          });
+                                                      }}
+                        >{p}</span>)
+                    }
+                </div>
                 {this.props.users.map(u => <div key={u.id}>
                     <span>
                         <div>
-                            <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={s.userPhoto} alt={'user'}/>
+                            <img src={u.photos.small !== null ? u.photos.small : userPhoto} className={s.userPhoto}
+                                 alt={'user'}/>
                         </div>
                         <div>
                             {u.followed
@@ -62,6 +78,6 @@ class Users extends React.Component<UserPropsType> {
             </>
         )
     }
-};
+}
 
 export default Users;

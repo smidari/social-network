@@ -12,8 +12,8 @@ import {
 } from "../redux/dialogs-reducer";
 import {
     FOLLOW,
-    followAC,
-    SET_USERS,
+    followAC, SET_CURRENTPAGE, SET_TOTALCOUNT,
+    SET_USERS, setCurrentPage, setTotalUsersCount,
     setUsersAC,
     UNFOLLOW,
     unfollowAC,
@@ -65,6 +65,9 @@ export type ActionsType =
     | ReturnType<typeof followAC>
     | ReturnType<typeof unfollowAC>
     | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setTotalUsersCount>
+
 
 
 //Types Actions profile-reducer
@@ -96,4 +99,12 @@ export type unfollowACType = {
 export type setUsersACType = {
     type: typeof SET_USERS
     users: Array<UsersType>
+}
+export type setCurrentType = {
+    type: typeof SET_CURRENTPAGE
+    currentPage: number
+}
+export type setTotalUsersCountType = {
+    type: typeof SET_TOTALCOUNT
+    totalCount: number
 }
